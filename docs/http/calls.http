@@ -1,0 +1,41 @@
+### Start a call: opens a ringing call to peerUserId and returns the caller's join token.
+# {{token}} is a Sanctum bearer token (POST /api/auth/login returns one).
+POST {{host}}/api/voice/calls
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "peerUserId": 2
+}
+
+### Poll: the signed-in user's open call, if any (no token). The callee polls this every
+### few seconds; a ringing call with role = callee is an incoming call. No data = no call.
+GET {{host}}/api/voice/calls/current
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Accept (callee only): marks the call active and returns the callee's join token.
+POST {{host}}/api/voice/calls/{{callId}}/accept
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Decline (callee only, while ringing): closes the room so the caller is dropped.
+POST {{host}}/api/voice/calls/{{callId}}/decline
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Hang up (either side): cancels a ringing call or ends an active one; closes the room.
+POST {{host}}/api/voice/calls/{{callId}}/hangup
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### Rejoin token: a fresh join token for an open call you are part of.
+POST {{host}}/api/voice/calls/{{callId}}/token
+Authorization: Bearer {{token}}
+Accept: application/json
+
+### History: your most recent calls in both roles, newest first.
+GET {{host}}/api/voice/calls?limit=20
+Authorization: Bearer {{token}}
+Accept: application/json

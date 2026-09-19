@@ -1,0 +1,21 @@
+### Agent room: private room with the voice assistant
+# {{token}} is a Sanctum bearer token (POST /api/auth/login returns one).
+POST {{host}}/api/voice/token
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "kind": "agent"
+}
+
+### Call room: shared with another user (peerUserId is the bigint users.id)
+POST {{host}}/api/voice/token
+Authorization: Bearer {{token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "kind": "call",
+  "peerUserId": 2
+}

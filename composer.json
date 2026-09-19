@@ -1,0 +1,33 @@
+{
+    "name": "codatsoft/realtime",
+    "version": "1.0.0",
+    "description": "Voice rooms with a LiveKit agent, user-to-user calls, and the realtime channel conventions shared by Codatsoft Laravel products.",
+    "license": "MIT",
+    "type": "library",
+    "require": {
+        "php": "^8.4",
+        "laravel/framework": "^12.0",
+        "laravel/sanctum": "^4.0",
+        "agence104/livekit-server-sdk": "^1.3",
+        "ably/laravel-broadcaster": "^1.0",
+        "codatsoft/codatbase": "^3.20"
+    },
+    "autoload": {
+        "psr-4": {
+            "Codatsoft\\Realtime\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Bassel Hadba",
+            "email": "bassel@codatsoft.com"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Codatsoft\\Realtime\\RealtimeServiceProvider"
+            ]
+        }
+    }
+}
