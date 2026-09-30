@@ -1,6 +1,6 @@
 {
     "name": "codatsoft/realtime",
-    "version": "1.0.1",
+    "version": "2.0.0",
     "description": "Voice rooms with a LiveKit agent, user-to-user calls, and the realtime channel conventions shared by Codatsoft Laravel products.",
     "license": "MIT",
     "type": "library",
